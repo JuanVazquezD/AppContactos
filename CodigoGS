@@ -1,0 +1,515 @@
+/**
+ * ===========================================
+ * NEARSHORE CONNECTION - CONTACTS APP
+ * Google Apps Script Backend
+ * ===========================================
+ */
+
+// Configuración
+const SPREADSHEET_ID = '1FYEiUzBITwjcEgfQKlDD6tLDO8UFvxz-kKyaGHq8Jt4';
+
+// Nombres de las pestañas
+const SHEETS = {
+  CONTACTS: 'Contactos',
+  ORGANIZATIONS: 'Organizaciones',
+  OPTIONS: 'Opciones',
+  PERMISSIONS: 'Permisos',
+  ADMIN: 'Panel Administración',
+  FIELDS: 'Campos',
+  STAFF: 'Staff',
+  COMMENTS: 'Comentarios',
+  LOG: 'Log Cambios'
+};
+
+/**
+ * Maneja las peticiones GET
+ */
+function doGet(e) {
+  const action = e.parameter.action || 'getData';
+  
+  let result;
+  
+  switch(action) {
+    case 'getData':
+      result = getAllData();
+      break;
+    case 'getContacts':
+      result = getContacts();
+      break;
+    case 'getOrganizations':
+      result = getOrganizations();
+      break;
+    case 'getOptions':
+      result = getOptions();
+      break;
+    default:
+      result = { error: 'Acción no válida' };
+  }
+  
+  return ContentService
+    .createTextOutput(JSON.stringify(result))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+/**
+ * Maneja las peticiones POST
+ */
+function doPost(e) {
+  try {
+    const data = JSON.parse(e.postData.contents);
+    const action = data.action;
+    
+    let result;
+    
+    switch(action) {
+      case 'save':
+        result = saveData(data.table, data.data);
+        break;
+      case 'delete':
+        result = deleteData(data.table, data.id);
+        break;
+      case 'saveContact':
+        result = saveContact(data.data);
+        break;
+      case 'saveOrganization':
+        result = saveOrganization(data.data);
+        break;
+      default:
+        result = { error: 'Acción no válida' };
+    }
+    
+    return ContentService
+      .createTextOutput(JSON.stringify(result))
+      .setMimeType(ContentService.MimeType.JSON);
+      
+  } catch (error) {
+    return ContentService
+      .createTextOutput(JSON.stringify({ error: error.message }))
+      .setMimeType(ContentService.MimeType.JSON);
+  }
+}
+
+/**
+ * Obtiene todos los datos
+ */
+function getAllData() {
+  return {
+    contacts: getContacts(),
+    organizations: getOrganizations(),
+    options: getOptions(),
+    staff: getStaff(),
+    timestamp: new Date().toISOString()
+  };
+}
+
+/**
+ * Obtiene los contactos
+ */
+function getContacts() {
+  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  const sheet = ss.getSheetByName(SHEETS.CONTACTS);
+  
+  if (!sheet) return [];
+  
+  const data = sheet.getDataRange().getValues();
+  if (data.length <= 1) return [];
+  
+  const contacts = [];
+  
+  for (let i = 1; i < data.length; i++) {
+    const row = data[i];
+    if (!row[0]) continue;
+    
+    const contact = {
+      id: row[0] || generateId('CON'),
+      directory: row[1],
+      orgId: row[2],
+      org: row[2],
+      parentContactId: row[3],
+      name: row[4],
+      position: row[5],
+      topics: row[6],
+      functions: row[7],
+      cell: row[8],
+      cellType: row[9],
+      whatsapp: row[10],
+      phone: row[11],
+      phoneType: row[12],
+      email: row[13],
+      emailType: row[14],
+      email2: row[15],
+      emailType2: row[16],
+      email3: row[17],
+      emailType3: row[18],
+      emailPreference: row[19],
+      linkedin: row[20],
+      notes: row[21],
+      active: row[22] !== false && row[22] !== '❌',
+      status: row[23]
+    };
+    
+    contacts.push(contact);
+  }
+  
+  return contacts;
+}
+
+/**
+ * Obtiene las organizaciones
+ */
+function getOrganizations() {
+  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  const sheet = ss.getSheetByName(SHEETS.ORGANIZATIONS);
+  
+  if (!sheet) return [];
+  
+  const data = sheet.getDataRange().getValues();
+  if (data.length <= 1) return [];
+  
+  const organizations = [];
+  
+  for (let i = 1; i < data.length; i++) {
+    const row = data[i];
+    if (!row[0]) continue;
+    
+    const org = {
+      id: row[0] || generateId('ORG'),
+      parentOrgId: row[1],
+      type: row[2],
+      sector: row[3],
+      subsector: row[4],
+      directories: row[5],
+      tier: row[6],
+      name: row[7],
+      origin: row[8],
+      scope: row[9],
+      website: row[10],
+      unitScope: row[11],
+      location: row[12],
+      address: row[13],
+      phone: row[14],
+      industrialTopics: row[15],
+      notes: row[16],
+      contactCount: 0
+    };
+    
+    organizations.push(org);
+  }
+  
+  const contacts = getContacts();
+  organizations.forEach(org => {
+    org.contactCount = contacts.filter(c => c.orgId === org.id).length;
+  });
+  
+  return organizations;
+}
+
+/**
+ * Obtiene las opciones
+ */
+function getOptions() {
+  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  const sheet = ss.getSheetByName(SHEETS.OPTIONS);
+  
+  if (!sheet) return {};
+  
+  const data = sheet.getDataRange().getValues();
+  if (data.length <= 1) return {};
+  
+  const options = {};
+  
+  for (let i = 1; i < data.length; i++) {
+    const row = data[i];
+    const category = row[0];
+    const value = row[1];
+    
+    if (!category) continue;
+    
+    if (!options[category]) {
+      options[category] = [];
+    }
+    
+    if (value) {
+      options[category].push(value);
+    }
+  }
+  
+  return options;
+}
+
+/**
+ * Obtiene el staff
+ */
+function getStaff() {
+  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  const sheet = ss.getSheetByName(SHEETS.STAFF);
+  
+  if (!sheet) return [];
+  
+  const data = sheet.getDataRange().getValues();
+  if (data.length <= 1) return [];
+  
+  const staff = [];
+  
+  for (let i = 1; i < data.length; i++) {
+    const row = data[i];
+    if (!row[0]) continue;
+    
+    staff.push({
+      name: row[0],
+      email: row[1],
+      email2: row[2],
+      startDate: row[3],
+      contactsPermission: row[4],
+      orgsPermission: row[5],
+      optionsPermission: row[6],
+      participantsPermission: row[7],
+      staffPermission: row[8],
+      active: row[9] !== false && row[9] !== '❌'
+    });
+  }
+  
+  return staff;
+}
+
+/**
+ * Guarda un contacto
+ */
+function saveContact(contactData) {
+  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  const sheet = ss.getSheetByName(SHEETS.CONTACTS);
+  
+  if (!sheet) {
+    return { error: 'Hoja de Contactos no encontrada' };
+  }
+  
+  const id = contactData.id || generateId('CON');
+  
+  const data = sheet.getDataRange().getValues();
+  let rowIndex = -1;
+  
+  for (let i = 1; i < data.length; i++) {
+    if (data[i][0] === id) {
+      rowIndex = i + 1;
+      break;
+    }
+  }
+  
+  const rowData = [
+    id,
+    contactData.directory || '',
+    contactData.orgId || '',
+    contactData.parentContactId || '',
+    contactData.name || '',
+    contactData.position || '',
+    contactData.topics || '',
+    contactData.functions || '',
+    contactData.cell || '',
+    contactData.cellType || 'Personal',
+    contactData.whatsapp || '',
+    contactData.phone || '',
+    contactData.phoneType || 'Oficina',
+    contactData.email || '',
+    contactData.emailType || 'Trabajo',
+    contactData.email2 || '',
+    contactData.emailType2 || '',
+    contactData.email3 || '',
+    contactData.emailType3 || '',
+    contactData.emailPreference || '1',
+    contactData.linkedin || '',
+    contactData.notes || '',
+    contactData.active !== false ? '✅' : '❌',
+    contactData.status || 'Activo'
+  ];
+  
+  if (rowIndex > 0) {
+    sheet.getRange(rowIndex, 1, 1, rowData.length).setValues([rowData]);
+  } else {
+    sheet.appendRow(rowData);
+  }
+  
+  logChange(SHEETS.CONTACTS, id, contactData.id ? 'UPDATE' : 'CREATE', contactData);
+  
+  return { success: true, id: id };
+}
+
+/**
+ * Guarda una organización
+ */
+function saveOrganization(orgData) {
+  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  const sheet = ss.getSheetByName(SHEETS.ORGANIZATIONS);
+  
+  if (!sheet) {
+    return { error: 'Hoja de Organizaciones no encontrada' };
+  }
+  
+  const id = orgData.id || generateId('ORG');
+  
+  const data = sheet.getDataRange().getValues();
+  let rowIndex = -1;
+  
+  for (let i = 1; i < data.length; i++) {
+    if (data[i][0] === id) {
+      rowIndex = i + 1;
+      break;
+    }
+  }
+  
+  const rowData = [
+    id,
+    orgData.parentOrgId || '',
+    orgData.type || '',
+    orgData.sector || '',
+    orgData.subsector || '',
+    orgData.directories || '',
+    orgData.tier || '',
+    orgData.name || '',
+    orgData.origin || '',
+    orgData.scope || '',
+    orgData.website || '',
+    orgData.unitScope || '',
+    orgData.location || '',
+    orgData.address || '',
+    orgData.phone || '',
+    orgData.industrialTopics || '',
+    orgData.notes || ''
+  ];
+  
+  if (rowIndex > 0) {
+    sheet.getRange(rowIndex, 1, 1, rowData.length).setValues([rowData]);
+  } else {
+    sheet.appendRow(rowData);
+  }
+  
+  logChange(SHEETS.ORGANIZATIONS, id, orgData.id ? 'UPDATE' : 'CREATE', orgData);
+  
+  return { success: true, id: id };
+}
+
+/**
+ * Elimina un registro
+ */
+function deleteData(table, id) {
+  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  const sheetName = table === 'contacts' ? SHEETS.CONTACTS : SHEETS.ORGANIZATIONS;
+  const sheet = ss.getSheetByName(sheetName);
+  
+  if (!sheet) {
+    return { error: 'Hoja no encontrada' };
+  }
+  
+  const data = sheet.getDataRange().getValues();
+  
+  for (let i = 1; i < data.length; i++) {
+    if (data[i][0] === id) {
+      sheet.deleteRow(i + 1);
+      logChange(sheetName, id, 'DELETE', { id: id });
+      return { success: true };
+    }
+  }
+  
+  return { error: 'Registro no encontrado' };
+}
+
+/**
+ * Guarda genérico
+ */
+function saveData(table, data) {
+  if (table === 'contacts') {
+    return saveContact(data);
+  } else if (table === 'organizations') {
+    return saveOrganization(data);
+  }
+  return { error: 'Tabla no válida' };
+}
+
+/**
+ * Genera un ID único
+ */
+function generateId(prefix) {
+  const timestamp = new Date().getTime().toString(36);
+  const random = Math.random().toString(36).substring(2, 6);
+  return ${prefix}_${timestamp}${random}.toUpperCase();
+}
+
+/**
+ * Registra un cambio en el log
+ */
+function logChange(module, recordId, action, data) {
+  try {
+    const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+    const sheet = ss.getSheetByName(SHEETS.LOG);
+    
+    if (!sheet) return;
+    
+    const logId = generateId('LOG');
+    const timestamp = new Date();
+    const user = Session.getActiveUser().getEmail() || 'Sistema';
+    
+    sheet.appendRow([
+      logId,
+      timestamp,
+      module,
+      recordId,
+      action,
+      JSON.stringify(data).substring(0, 500),
+      user
+    ]);
+  } catch (e) {
+    console.log('Error logging change:', e);
+  }
+}
+
+/**
+ * Inicializa las hojas si no existen
+ */
+function initializeSheets() {
+  const ss = SpreadsheetApp.openById(SPREADSHEET_ID);
+  
+  Object.values(SHEETS).forEach(sheetName => {
+    let sheet = ss.getSheetByName(sheetName);
+    if (!sheet) {
+      sheet = ss.insertSheet(sheetName);
+      Logger.log('Hoja creada: ' + sheetName);
+    }
+  });
+  
+  const contactsSheet = ss.getSheetByName(SHEETS.CONTACTS);
+  if (contactsSheet.getLastRow() === 0) {
+    contactsSheet.appendRow([
+      'Contacto ID', 'Directorio', 'Organización', 'De Participante', 'Nombre',
+      'Puesto', 'Temas', 'Funciones', 'Celular', 'Tipo Celular', 'Whatsapp',
+      'Teléfono', 'Tipo Teléfono', 'Email', 'Tipo Email', 'Email 2', 'Tipo Email 2',
+      'Email 3', 'Tipo Email 3', 'Preferencia Email', 'LinkedIn', 'Notas', 'Activo', 'Estatus'
+    ]);
+  }
+  
+  const orgsSheet = ss.getSheetByName(SHEETS.ORGANIZATIONS);
+  if (orgsSheet.getLastRow() === 0) {
+    orgsSheet.appendRow([
+      'ID Organización', 'Unidad de', 'Tipo Organización', 'Sector', 'Subsector',
+      'Directorios', 'Tier', 'Nombre', 'Origen', 'Alcance Geográfico', 'Página Web',
+      'Alcance Unidad', 'Ubicación', 'Dirección', 'Teléfono', 'Temas Industriales', 'Notas'
+    ]);
+  }
+  
+  const logSheet = ss.getSheetByName(SHEETS.LOG);
+  if (logSheet.getLastRow() === 0) {
+    logSheet.appendRow([
+      'Log ID', 'Timestamp', 'Módulo', 'Registro ID', 'Acción', 'Datos', 'Usuario'
+    ]);
+  }
+  
+  Logger.log('Inicialización completada');
+}
+
+/**
+ * Función de prueba
+ */
+function testConnection() {
+  const data = getAllData();
+  Logger.log('Contactos: ' + data.contacts.length);
+  Logger.log('Organizaciones: ' + data.organizations.length);
+  return data;
+}
