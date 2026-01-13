@@ -1,0 +1,68 @@
+# Archivos del sistema operativo
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# Archivos de respaldo y temporales
+*~
+*.bak
+*.tmp
+*.swp
+*.swo
+*.log
+
+# Archivos de configuración del editor
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.project
+.settings/
+
+# Node.js (si se agrega en el futuro)
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+# Archivos muy grandes (considera usar Git LFS)
+*.psd
+*.ai
+*.sketch
+# Descomentar si tienes archivos de video muy grandes:
+# *.mp4
+# *.mov
+# *.avi
+
+# Archivos sensibles (nunca subir)
+*.env
+.env.local
+.env.*.local
+secrets.json
+credentials.json
+*.key
+*.pem
+
+# Archivos de documentación temporales de Microsoft Office
+~$*.doc*
+~$*.xls*
+~$*.ppt*
+
+# Archivos temporales de macOS
+.fseventsd
+.TemporaryItems
+.DocumentRevisions-V100
+.VolumeIcon.icns
+.AppleDouble
+.LSOverride
+
+# Comentarios:
+# - Los archivos .gitkeep SÍ se incluyen (para mantener estructura de carpetas vacías)
+# - Los archivos Word/Excel (.docx, .xlsx) SÍ se permiten (para documentación)
+# - Los archivos de imagen (PNG, JPG, SVG) SÍ se permiten (para diseños)
+# - Si necesitas subir archivos muy grandes (>50MB), considera usar Git LFS

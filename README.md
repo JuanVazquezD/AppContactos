@@ -10,10 +10,24 @@ Esta webapp permite:
 ✅ Log de cambios automático
 ✅ Sistema de permisos por usuario
 🗂️ Estructura de Archivos
-nearshore-contacts/
-├── index.html      # Frontend principal (HTML/CSS/JS)
-├── Code.gs         # Backend Google Apps Script
-└── README.md       # Este archivo
+AppContactos/
+├── index.html           # Frontend principal (HTML/CSS/JS)
+├── CodigoGS            # Backend Google Apps Script
+├── README.md           # Este archivo
+├── CONTRIBUTING.md     # Guía de contribución
+├── docs/               # 📄 Documentación
+│   ├── user-guides/    # Guías de usuario
+│   ├── technical/      # Documentación técnica
+│   ├── api/            # Documentación de API
+│   └── meeting-notes/  # Notas de reuniones
+└── designs/            # 🎨 Diseños y maquetas
+    ├── google-stitch/  # Diseños de Google Stitch
+    │   ├── wireframes/ # Wireframes
+    │   ├── mockups/    # Mockups
+    │   └── prototypes/ # Prototipos
+    ├── figma/          # Archivos de Figma
+    ├── screenshots/    # Capturas de pantalla
+    └── assets/         # Recursos gráficos
 🚀 Instalación
 Paso 1: Configurar Google Sheets
 Tu Google Sheet ya tiene el ID: 1FYEiUzBITwjcEgfQKlDD6tLDO8UFvxz-kKyaGHq8Jt4
@@ -169,10 +183,30 @@ Error de CORS
 Si ves errores de CORS, asegúrate de:
 Usar HTTPS en tu frontend
 La app de Apps Script esté publicada como "Cualquier persona"
+📚 Documentación y Diseños
+
+### Subir Documentos
+Puedes subir documentos de Word, hojas de Google Sheets y otros archivos al repositorio:
+- **Documentos Word**: Sube archivos `.docx` a `docs/user-guides/` o `docs/technical/`
+- **Google Sheets**: Exporta como `.xlsx` o comparte links en `docs/`
+- **Guías completas**: Ver [CONTRIBUTING.md](CONTRIBUTING.md)
+
+### Subir Diseños
+Puedes subir carpetas completas con diseños de Google Stitch y otros mockups:
+- **Ubicación**: `designs/google-stitch/`
+- **Formatos**: PNG, JPG, SVG, PDF, Figma, Sketch
+- **Cómo hacerlo**: Ver [designs/README.md](designs/README.md)
+
+Para instrucciones detalladas sobre cómo subir documentos y diseños, consulta:
+- 📖 [Guía de Contribución](CONTRIBUTING.md) - Instrucciones paso a paso
+- 📄 [Documentación](docs/README.md) - Sobre documentos Word, Excel, Google Sheets
+- 🎨 [Diseños](designs/README.md) - Sobre diseños de Google Stitch y mockups
+
 📞 Soporte
 Para reportar problemas o solicitar funciones:
 Revisa la documentación
 Verifica la configuración
+Consulta [CONTRIBUTING.md](CONTRIBUTING.md) para subir archivos
 Contacta al administrador del sistema
 📜 Licencia
 Proyecto desarrollado para Nearshore Connection.
