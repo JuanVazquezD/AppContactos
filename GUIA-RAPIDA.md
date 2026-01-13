@@ -90,7 +90,7 @@
 ```
 1. GitHub Desktop mostrará todos los archivos nuevos
 2. En el campo de mensaje escribe: "Agregar diseños de Google Stitch"
-3. Haz clic en "Commit to copilot/add-document-upload-functionality"
+3. Haz clic en "Commit to main" (o tu rama actual)
 4. Haz clic en "Push origin"
 ```
 

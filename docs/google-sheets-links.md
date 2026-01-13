@@ -5,10 +5,11 @@ Este archivo contiene enlaces a las hojas de cálculo de Google Sheets utilizada
 ## Hojas de Cálculo Principales
 
 ### Datos de la Aplicación
-- **[Hoja Principal - Contactos y Organizaciones](https://docs.google.com/spreadsheets/d/1FYEiUzBITwjcEgfQKlDD6tLDO8UFvxz-kKyaGHq8Jt4)**
+- **[Hoja Principal - Contactos y Organizaciones](https://docs.google.com/spreadsheets/d/YOUR-SHEET-ID-HERE)**
   - Contiene: Contactos, Organizaciones, Opciones, Permisos, Staff
   - Actualizada: 2026-01
-  - Responsable: Equipo Nearshore Connection
+  - Responsable: Equipo del Proyecto
+  - _Nota: Reemplaza YOUR-SHEET-ID-HERE con el ID real de tu hoja_
 
 ## Cómo Agregar Nuevas Hojas
 
