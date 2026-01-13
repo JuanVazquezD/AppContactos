@@ -206,6 +206,2319 @@
             letter-spacing: -0.5px;
         }
 
+        .header-search {
+            position: relative;
+            flex: 1;
+            max-width: 450px;
+            margin: 0 40px;
+        }
+
+        .header-search input {
+            width: 100%;
+            padding: 12px 16px 12px 48px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius-lg);
+            font-size: 14px;
+            font-family: inherit;
+            background: var(--bg-main);
+            transition: var(--transition);
+        }
+
+        .header-search input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: var(--bg-card);
+            box-shadow: var(--shadow-md);
+        }
+
+        .header-search .material-icons-round {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+            font-size: 20px;
+        }
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            font-weight: 600;
+            font-family: inherit;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            border: none;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+            color: var(--text-inverse);
+            box-shadow: 0 4px 15px rgba(13, 79, 139, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(13, 79, 139, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--bg-main);
+            color: var(--text-primary);
+            border: 2px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background: var(--bg-card);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-accent {
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            color: var(--text-primary);
+            box-shadow: 0 4px 15px rgba(232, 168, 56, 0.35);
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 6px 12px 6px 6px;
+            background: var(--bg-main);
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .user-menu:hover {
+            background: var(--border);
+        }
+
+        .user-avatar {
+            width: 36px;
+            height: 36px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .user-info {
+            text-align: left;
+        }
+
+        .user-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .user-role {
+            font-size: 11px;
+            color: var(--text-secondary);
+        }
+
+        /* Content Area */
+        .content {
+            padding: 28px 32px;
+        }
+
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 28px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            padding: 22px;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+        }
+
+        .stat-card.contacts::before { background: var(--primary); }
+        .stat-card.organizations::before { background: var(--accent); }
+        .stat-card.active::before { background: var(--success); }
+        .stat-card.recent::before { background: #8B5CF6; }
+
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stat-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stat-card.contacts .stat-icon { background: rgba(13, 79, 139, 0.1); color: var(--primary); }
+        .stat-card.organizations .stat-icon { background: rgba(232, 168, 56, 0.15); color: var(--accent-dark); }
+        .stat-card.active .stat-icon { background: rgba(46, 139, 87, 0.1); color: var(--success); }
+        .stat-card.recent .stat-icon { background: rgba(139, 92, 246, 0.1); color: #8B5CF6; }
+
+        .stat-change {
+            font-size: 12px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .stat-change.up {
+            background: rgba(46, 139, 87, 0.1);
+            color: var(--success);
+        }
+
+        .stat-value {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        /* Directory Card */
+        .directory-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+        }
+
+        .card-header {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title .material-icons-round {
+            color: var(--primary);
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .filter-tabs {
+            display: flex;
+            gap: 4px;
+            background: var(--bg-main);
+            padding: 4px;
+            border-radius: var(--radius-md);
+        }
+
+        .filter-tab {
+            padding: 8px 16px;
+            border: none;
+            background: transparent;
+            border-radius: var(--radius-sm);
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: inherit;
+        }
+
+        .filter-tab.active {
+            background: var(--bg-card);
+            color: var(--primary);
+            box-shadow: var(--shadow-sm);
+        }
+
+        /* Table */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: left;
+            padding: 14px 20px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            background: var(--bg-main);
+            border-bottom: 1px solid var(--border);
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-light);
+            vertical-align: middle;
+        }
+
+        tr:hover td {
+            background: rgba(13, 79, 139, 0.02);
+        }
+
+        .contact-cell {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .contact-avatar {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+            font-size: 15px;
+            flex-shrink: 0;
+        }
+
+        .contact-avatar.org {
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+        }
+
+        .contact-info h4 {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+        }
+
+        .contact-info span {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .org-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background: rgba(13, 79, 139, 0.08);
+            border-radius: 20px;
+            font-size: 12px;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .status-badge.active {
+            background: rgba(46, 139, 87, 0.1);
+            color: var(--success);
+        }
+
+        .status-badge.inactive {
+            background: rgba(196, 69, 77, 0.1);
+            color: var(--danger);
+        }
+
+        .tier-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .tier-badge.tier-1 {
+            background: linear-gradient(135deg, #FFD700 0%, #FFA500 100%);
+            color: #5C4813;
+        }
+
+        .tier-badge.tier-2 {
+            background: linear-gradient(135deg, #C0C0C0 0%, #A8A8A8 100%);
+            color: #4A4A4A;
+        }
+
+        .tier-badge.tier-3 {
+            background: linear-gradient(135deg, #CD7F32 0%, #B87333 100%);
+            color: #5C3D1E;
+        }
+
+        .contact-actions {
+            display: flex;
+            gap: 4px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        tr:hover .contact-actions {
+            opacity: 1;
+        }
+
+        .action-btn {
+            width: 34px;
+            height: 34px;
+            border: none;
+            background: var(--bg-main);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .action-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .action-btn.delete:hover {
+            background: var(--danger);
+        }
+
+        /* Table Footer */
+        .table-footer {
+            padding: 16px 24px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .table-info {
+            font-size: 13px;
+            color: var(--text-secondary);
+        }
+
+        .pagination {
+            display: flex;
+            gap: 4px;
+        }
+
+        .page-btn {
+            width: 36px;
+            height: 36px;
+            border: 1px solid var(--border);
+            background: var(--bg-card);
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 13px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .page-btn:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        .page-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(10, 58, 92, 0.6);
+            backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow: hidden;
+            transform: scale(0.9) translateY(20px);
+            transition: var(--transition);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .modal-overlay.active .modal {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-header {
+            padding: 24px 28px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .modal-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .modal-title .material-icons-round {
+            color: var(--primary);
+        }
+
+        .modal-close {
+            width: 38px;
+            height: 38px;
+            border: none;
+            background: var(--bg-main);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .modal-close:hover {
+            background: var(--danger);
+            color: white;
+        }
+
+        .modal-body {
+            padding: 28px;
+            overflow-y: auto;
+            max-height: calc(90vh - 160px);
+        }
+
+        .modal-footer {
+            padding: 20px 28px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+        }
+
+        /* Form Styles */
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .form-grid.three-col {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .form-group {
+            margin-bottom: 0;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .form-label .required {
+            color: var(--danger);
+            margin-left: 2px;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--border);
+            border-radius: var(--radius-md);
+            font-size: 14px;
+            font-family: inherit;
+            color: var(--text-primary);
+            background: var(--bg-card);
+            transition: var(--transition);
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(13, 79, 139, 0.1);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-select {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%235A6B7C' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 40px;
+        }
+
+        .form-section {
+            margin-bottom: 28px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .form-section:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .form-section-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .form-section-title .material-icons-round {
+            font-size: 18px;
+            color: var(--primary);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: var(--primary);
+        }
+
+        /* Toast Notifications */
+        .toast-container {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .toast {
+            padding: 14px 20px;
+            background: var(--bg-card);
+            border-radius: var(--radius-md);
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            animation: slideIn 0.3s ease;
+            min-width: 300px;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .toast.success {
+            border-left: 4px solid var(--success);
+        }
+
+        .toast.error {
+            border-left: 4px solid var(--danger);
+        }
+
+        .toast-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .toast.success .toast-icon {
+            background: rgba(46, 139, 87, 0.1);
+            color: var(--success);
+        }
+
+        .toast.error .toast-icon {
+            background: rgba(196, 69, 77, 0.1);
+            color: var(--danger);
+        }
+
+        .toast-message {
+            flex: 1;
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+
+        /* Loading Spinner */
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--border);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255,255,255,0.9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            z-index: 3000;
+        }
+
+        .loading-text {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Section Content */
+        .section-content {
+            display: none;
+        }
+
+        .section-content.active {
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .form-grid.three-col {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .app-container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                transform: translateX(-100%);
+            }
+            .main-content {
+                margin-left: 0;
+            }
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-grid, .form-grid.three-col {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="spinner"></div>
+        <div class="loading-text">Cargando datos...</div>
+    </div>
+
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon">NC</div>
+                    <div class="logo-text">
+                        <h1>Nearshore</h1>
+                        <span>Contactos</span>
+                    </div>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <div class="nav-section">
+                    <div class="nav-section-title">Principal</div>
+                    <a class="nav-item active" data-section="directorio" onclick="showSection('directorio')">
+                        <span class="material-icons-round">dashboard</span>
+                        Dashboard
+                    </a>
+                    <a class="nav-item" data-section="contactos" onclick="showSection('contactos')">
+                        <span class="material-icons-round">people</span>
+                        Contactos
+                        <span class="nav-badge" id="contactCount">0</span>
+                    </a>
+                    <a class="nav-item" data-section="organizaciones" onclick="showSection('organizaciones')">
+                        <span class="material-icons-round">business</span>
+                        Organizaciones
+                        <span class="nav-badge" id="orgCount">0</span>
+                    </a>
+                </div>
+                <div class="nav-section">
+                    <div class="nav-section-title">Configuración</div>
+                    <a class="nav-item" data-section="opciones" onclick="showSection('opciones')">
+                        <span class="material-icons-round">tune</span>
+                        Opciones
+                    </a>
+                    <a class="nav-item" data-section="staff" onclick="showSection('staff')">
+                        <span class="material-icons-round">badge</span>
+                        Staff
+                    </a>
+                </div>
+                <div class="nav-section">
+                    <div class="nav-section-title">Sistema</div>
+                    <a class="nav-item" data-section="logs" onclick="showSection('logs')">
+                        <span class="material-icons-round">history</span>
+                        Log de Cambios
+                    </a>
+                </div>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="header">
+                <div class="header-left">
+                    <h1 class="page-title" id="pageTitle">Dashboard</h1>
+                </div>
+                <div class="header-search">
+                    <span class="material-icons-round">search</span>
+                    <input type="text" placeholder="Buscar contactos, organizaciones..." id="globalSearch" onkeyup="handleGlobalSearch(event)">
+                </div>
+                <div class="header-actions">
+                    <button class="btn btn-primary" onclick="openModal('contact')">
+                        <span class="material-icons-round">person_add</span>
+                        Nuevo Contacto
+                    </button>
+                    <button class="btn btn-secondary" onclick="openModal('organization')">
+                        <span class="material-icons-round">business</span>
+                        Nueva Organización
+                    </button>
+                    <div class="user-menu">
+                        <div class="user-avatar">JD</div>
+                        <div class="user-info">
+                            <div class="user-name">Usuario</div>
+                            <div class="user-role">Gestor</div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content -->
+            <div class="content">
+                <!-- Dashboard Section -->
+                <div class="section-content active" id="section-directorio">
+                    <div class="stats-grid">
+                        <div class="stat-card contacts">
+                            <div class="stat-header">
+                                <div class="stat-icon">
+                                    <span class="material-icons-round">people</span>
+                                </div>
+                                <span class="stat-change up">+12%</span>
+                            </div>
+                            <div class="stat-value" id="statContacts">0</div>
+                            <div class="stat-label">Total Contactos</div>
+                        </div>
+                        <div class="stat-card organizations">
+                            <div class="stat-header">
+                                <div class="stat-icon">
+                                    <span class="material-icons-round">business</span>
+                                </div>
+                                <span class="stat-change up">+8%</span>
+                            </div>
+                            <div class="stat-value" id="statOrgs">0</div>
+                            <div class="stat-label">Organizaciones</div>
+                        </div>
+                        <div class="stat-card active">
+                            <div class="stat-header">
+                                <div class="stat-icon">
+                                    <span class="material-icons-round">check_circle</span>
+                                </div>
+                            </div>
+                            <div class="stat-value" id="statActive">0</div>
+                            <div class="stat-label">Contactos Activos</div>
+                        </div>
+                        <div class="stat-card recent">
+                            <div class="stat-header">
+                                <div class="stat-icon">
+                                    <span class="material-icons-round">schedule</span>
+                                </div>
+                            </div>
+                            <div class="stat-value" id="statRecent">0</div>
+                            <div class="stat-label">Añadidos este mes</div>
+                        </div>
+                    </div>
+
+                    <!-- Directory Table -->
+                    <div class="directory-card">
+                        <div class="card-header">
+                            <h2 class="card-title">
+                                <span class="material-icons-round">folder_shared</span>
+                                Directorio Principal
+                            </h2>
+                            <div class="card-actions">
+                                <div class="filter-tabs">
+                                    <button class="filter-tab active" onclick="filterDirectory('todos')">Todos</button>
+                                    <button class="filter-tab" onclick="filterDirectory('empresa')">Empresas</button>
+                                    <button class="filter-tab" onclick="filterDirectory('gobierno')">Gobierno</button>
+                                    <button class="filter-tab" onclick="filterDirectory('academia')">Academia</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Organización</th>
+                                        <th>Tipo</th>
+                                        <th>Sector</th>
+                                        <th>Tier</th>
+                                        <th>Contactos</th>
+                                        <th>Ubicación</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="directoryTable">
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="table-footer">
+                            <div class="table-info">
+                                Mostrando <strong id="showingCount">0</strong> de <strong id="totalCount">0</strong> registros
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contactos Section -->
+                <div class="section-content" id="section-contactos">
+                    <div class="directory-card">
+                        <div class="card-header">
+                            <h2 class="card-title">
+                                <span class="material-icons-round">people</span>
+                                Lista de Contactos
+                            </h2>
+                            <button class="btn btn-primary" onclick="openModal('contact')">
+                                <span class="material-icons-round">person_add</span>
+                                Nuevo Contacto
+                            </button>
+                        </div>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Contacto</th>
+                                        <th>Organización</th>
+                                        <th>Puesto</th>
+                                        <th>Email</th>
+                                        <th>Celular</th>
+                                        <th>Activo</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="contactsTable">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Organizaciones Section -->
+                <div class="section-content" id="section-organizaciones">
+                    <div class="directory-card">
+                        <div class="card-header">
+                            <h2 class="card-title">
+                                <span class="material-icons-round">business</span>
+                                Lista de Organizaciones
+                            </h2>
+                            <button class="btn btn-primary" onclick="openModal('organization')">
+                                <span class="material-icons-round">add_business</span>
+                                Nueva Organización
+                            </button>
+                        </div>
+                        <div class="table-container">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Organización</th>
+                                        <th>Tipo</th>
+                                        <th>Sector</th>
+                                        <th>Origen</th>
+                                        <th>Ubicación</th>
+                                        <th>Tier</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="orgsTable">
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other Sections -->
+                <div class="section-content" id="section-opciones">
+                    <div class="directory-card">
+                        <div class="card-header">
+                            <h2 class="card-title">
+                                <span class="material-icons-round">tune</span>
+                                Configuración de Opciones
+                            </h2>
+                        </div>
+                        <div class="modal-body">
+                            <p>Gestión de opciones para los formularios.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-content" id="section-staff">
+                    <div class="directory-card">
+                        <div class="card-header">
+                            <h2 class="card-title">
+                                <span class="material-icons-round">badge</span>
+                                Gestión de Staff
+                            </h2>
+                        </div>
+                        <div class="modal-body">
+                            <p>Administración de usuarios del sistema.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-content" id="section-logs">
+                    <div class="directory-card">
+                        <div class="card-header">
+                            <h2 class="card-title">
+                                <span class="material-icons-round">history</span>
+                                Log de Cambios
+                            </h2>
+                        </div>
+                        <div class="modal-body">
+                            <p>Historial de modificaciones del sistema.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal: Nuevo Contacto (TODOS LOS CAMPOS) -->
+    <div class="modal-overlay" id="contactModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">
+                    <span class="material-icons-round">person_add</span>
+                    <span id="contactModalTitle">Nuevo Contacto</span>
+                </h3>
+                <button class="modal-close" onclick="closeModal('contact')">
+                    <span class="material-icons-round">close</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="contactForm">
+                    <input type="hidden" id="contactId">
+                    
+                    <!-- Sección: Información Principal -->
+                    <div class="form-section">
+                        <div class="form-section-title">
+                            <span class="material-icons-round">person</span>
+                            Información Principal
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label">👤 Nombre <span class="required">*</span></label>
+                                <input type="text" class="form-input" id="contactName" required placeholder="Nombre completo">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">🏢 Organización <span class="required">*</span></label>
+                                <select class="form-select" id="contactOrg" required>
+                                    <option value="">Seleccionar organización...</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Directorio</label>
+                                <select class="form-select" id="contactDirectory" multiple>
+                                    <option value="Principal">Principal</option>
+                                    <option value="Empresas">Empresas</option>
+                                    <option value="Gobierno">Gobierno</option>
+                                    <option value="Academia">Academia</option>
+                                    <option value="Organismos">Organismos</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">De Participante</label>
+                                <select class="form-select" id="contactParent">
+                                    <option value="">Ninguno</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Puesto</label>
+                                <input type="text" class="form-input" id="contactPosition" placeholder="Cargo o puesto">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">🔄️ Estatus</label>
+                                <select class="form-select" id="contactStatus">
+                                    <option value="Activo">Activo</option>
+                                    <option value="Inactivo">Inactivo</option>
+                                    <option value="Pendiente">Pendiente</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sección: Temas y Funciones -->
+                    <div class="form-section">
+                        <div class="form-section-title">
+                            <span class="material-icons-round">category</span>
+                            Temas y Funciones
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label">Temas</label>
+                                <input type="text" class="form-input" id="contactTopics" placeholder="Separados por coma">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Funciones</label>
+                                <input type="text" class="form-input" id="contactFunctions" placeholder="Separados por coma">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sección: Teléfonos -->
+                    <div class="form-section">
+                        <div class="form-section-title">
+                            <span class="material-icons-round">phone</span>
+                            Teléfonos
+                        </div>
+                        <div class="form-grid three-col">
+                            <div class="form-group">
+                                <label class="form-label">📱 Celular</label>
+                                <input type="tel" class="form-input" id="contactCell" placeholder="+52 (XXX) XXX-XXXX">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Tipo Celular</label>
+                                <select class="form-select" id="contactCellType">
+                                    <option value="Personal">Personal</option>
+                                    <option value="Trabajo">Trabajo</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">WhatsApp</label>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="contactWhatsappSame">
+                                    <label for="contactWhatsappSame">Igual que celular</label>
+                                </div>
+                                <input type="tel" class="form-input" id="contactWhatsapp" placeholder="Número WhatsApp" style="margin-top: 8px;">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">☎️ Teléfono</label>
+                                <input type="tel" class="form-input" id="contactPhone" placeholder="(XXX) XXX-XXXX">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Tipo Teléfono</label>
+                                <select class="form-select" id="contactPhoneType">
+                                    <option value="Oficina">Oficina</option>
+                                    <option value="Casa">Casa</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sección: Emails -->
+                    <div class="form-section">
+                        <div class="form-section-title">
+                            <span class="material-icons-round">email</span>
+                            Correos Electrónicos
+                        </div>
+                        <div class="form-grid three-col">
+                            <div class="form-group">
+                                <label class="form-label">📧 Email 1</label>
+                                <input type="email" class="form-input" id="contactEmail1" placeholder="correo@ejemplo.com">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Tipo Email 1</label>
+                                <select class="form-select" id="contactEmailType1">
+                                    <option value="Trabajo">Trabajo</option>
+                                    <option value="Personal">Personal</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">📧 Email 2</label>
+                                <input type="email" class="form-input" id="contactEmail2" placeholder="correo2@ejemplo.com">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Tipo Email 2</label>
+                                <select class="form-select" id="contactEmailType2">
+                                    <option value="Trabajo">Trabajo</option>
+                                    <option value="Personal">Personal</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">📧 Email 3</label>
+                                <input type="email" class="form-input" id="contactEmail3" placeholder="correo3@ejemplo.com">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Tipo Email 3</label>
+                                <select class="form-select" id="contactEmailType3">
+                                    <option value="Trabajo">Trabajo</option>
+                                    <option value="Personal">Personal</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Preferencia Email</label>
+                                <select class="form-select" id="contactEmailPref">
+                                    <option value="1">Email 1</option>
+                                    <option value="2">Email 2</option>
+                                    <option value="3">Email 3</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sección: Redes y Notas -->
+                    <div class="form-section">
+                        <div class="form-section-title">
+                            <span class="material-icons-round">link</span>
+                            Redes Sociales y Notas
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label">LinkedIn</label>
+                                <input type="url" class="form-input" id="contactLinkedIn" placeholder="https://linkedin.com/in/usuario">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Activo</label>
+                                <select class="form-select" id="contactActive">
+                                    <option value="true">✅ Sí</option>
+                                    <option value="false">❌ No</option>
+                                </select>
+                            </div>
+                            <div class="form-group full">
+                                <label class="form-label">📝 Notas</label>
+                                <textarea class="form-textarea" id="contactNotes" placeholder="Información adicional..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('contact')">Cancelar</button>
+                <button class="btn btn-primary" onclick="saveContact()">
+                    <span class="material-icons-round">save</span>
+                    Guardar Contacto
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: Nueva Organización (TODOS LOS CAMPOS) -->
+    <div class="modal-overlay" id="organizationModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3 class="modal-title">
+                    <span class="material-icons-round">business</span>
+                    <span id="orgModalTitle">Nueva Organización</span>
+                </h3>
+                <button class="modal-close" onclick="closeModal('organization')">
+                    <span class="material-icons-round">close</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="orgForm">
+                    <input type="hidden" id="orgId">
+                    
+                    <!-- Sección: Información General -->
+                    <div class="form-section">
+                        <div class="form-section-title">
+                            <span class="material-icons-round">info</span>
+                            Información General
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group full">
+                                <label class="form-label">Nombre <span class="required">*</span></label>
+                                <input type="text" class="form-input" id="orgName" required placeholder="Nombre de la organización">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Unidad de</label>
+                                <select class="form-select" id="orgParent">
+                                    <option value="">Ninguna (organización principal)</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Tipo Organización <span class="required">*</span></label>
+                                <select class="form-select" id="orgType" required>
+                                    <option value="">Seleccionar...</option>
+                                    <option value="Empresa">Empresa</option>
+                                    <option value="Gobierno">Gobierno</option>
+                                    <option value="Academia">Academia</option>
+                                    <option value="ONG">ONG</option>
+                                    <option value="Organismo Empresarial">Organismo Empresarial</option>
+                                    <option value="Organismo Sindical">Organismo Sindical</option>
+                                    <option value="Organismo Internacional">Organismo Internacional</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Sector</label>
+                                <select class="form-select" id="orgSector">
+                                    <option value="">Seleccionar...</option>
+                                    <option value="Manufactura">Manufactura</option>
+                                    <option value="Tecnología">Tecnología</option>
+                                    <option value="Servicios">Servicios</option>
+                                    <option value="Automotriz">Automotriz</option>
+                                    <option value="Aeroespacial">Aeroespacial</option>
+                                    <option value="Electrónica">Electrónica</option>
+                                    <option value="Logística">Logística</option>
+                                    <option value="Energía">Energía</option>
+                                    <option value="Educación">Educación</option>
+                                    <option value="Salud">Salud</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Subsector</label>
+                                <input type="text" class="form-input" id="orgSubsector" placeholder="Subsector(es)">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Directorios</label>
+                                <input type="text" class="form-input" id="orgDirectories" placeholder="Directorios (separados por coma)">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Tier</label>
+                                <select class="form-select" id="orgTier">
+                                    <option value="">Seleccionar...</option>
+                                    <option value="Tier 1">Tier 1</option>
+                                    <option value="Tier 2">Tier 2</option>
+                                    <option value="Tier 3">Tier 3</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sección: Origen y Alcance -->
+                    <div class="form-section">
+                        <div class="form-section-title">
+                            <span class="material-icons-round">public</span>
+                            Origen y Alcance
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label">Origen</label>
+                                <select class="form-select" id="orgOrigin">
+                                    <option value="">Seleccionar...</option>
+                                    <option value="México">México</option>
+                                    <option value="USA">Estados Unidos</option>
+                                    <option value="Canadá">Canadá</option>
+                                    <option value="Alemania">Alemania</option>
+                                    <option value="Japón">Japón</option>
+                                    <option value="China">China</option>
+                                    <option value="Corea del Sur">Corea del Sur</option>
+                                    <option value="Francia">Francia</option>
+                                    <option value="España">España</option>
+                                    <option value="Otro">Otro</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Alcance Geográfico</label>
+                                <select class="form-select" id="orgScope">
+                                    <option value="">Seleccionar...</option>
+                                    <option value="Local">Local</option>
+                                    <option value="Regional">Regional</option>
+                                    <option value="Nacional">Nacional</option>
+                                    <option value="Internacional">Internacional</option>
+                                    <option value="Global">Global</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Alcance Unidad</label>
+                                <select class="form-select" id="orgUnitScope">
+                                    <option value="">Seleccionar...</option>
+                                    <option value="Local">Local</option>
+                                    <option value="Regional">Regional</option>
+                                    <option value="Nacional">Nacional</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Página Web</label>
+                                <input type="url" class="form-input" id="orgWebsite" placeholder="https://www.ejemplo.com">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sección: Ubicación y Contacto -->
+                    <div class="form-section">
+                        <div class="form-section-title">
+                            <span class="material-icons-round">location_on</span>
+                            Ubicación y Contacto
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label class="form-label">Ubicación</label>
+                                <input type="text" class="form-input" id="orgLocation" placeholder="Ciudad, Estado">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Teléfono</label>
+                                <input type="tel" class="form-input" id="orgPhone" placeholder="(XXX) XXX-XXXX">
+                            </div>
+                            <div class="form-group full">
+                                <label class="form-label">Dirección</label>
+                                <input type="text" class="form-input" id="orgAddress" placeholder="Dirección completa">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sección: Temas y Notas -->
+                    <div class="form-section">
+                        <div class="form-section-title">
+                            <span class="material-icons-round">notes</span>
+                            Temas Industriales y Notas
+                        </div>
+                        <div class="form-grid">
+                            <div class="form-group full">
+                                <label class="form-label">Temas Industriales</label>
+                                <input type="text" class="form-input" id="orgIndustrialTopics" placeholder="Temas (separados por coma)">
+                            </div>
+                            <div class="form-group full">
+                                <label class="form-label">📝 Notas</label>
+                                <textarea class="form-textarea" id="orgNotes" placeholder="Información adicional..."></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" onclick="closeModal('organization')">Cancelar</button>
+                <button class="btn btn-primary" onclick="saveOrganization()">
+                    <span class="material-icons-round">save</span>
+                    Guardar Organización
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script>
+        // ===========================
+        // CONFIGURATION
+        // ===========================
+        const CONFIG = {
+            SHEET_ID: '1FYEiUzBITwjcEgfQKlDD6tLDO8UFvxz-kKyaGHq8Jt4',
+            API_URL: 'https://script.google.com/macros/s/AKfycbwBt0Y_UH223SlKkiYqzVaJBqEGEQUmXZQVPHZQjgNPOTFhrHmwyoZot3K1mqg6APerUA/exec',
+            DEMO_MODE: false
+        };
+
+        // ===========================
+        // DATA STORE
+        // ===========================
+        let appData = {
+            contacts: [],
+            organizations: [],
+            options: {},
+            currentPage: 1,
+            itemsPerPage: 10
+        };
+
+        // ===========================
+        // INITIALIZATION
+        // ===========================
+        document.addEventListener('DOMContentLoaded', function() {
+            initApp();
+        });
+
+        async function initApp() {
+            showLoading(true);
+            
+            try {
+                if (CONFIG.DEMO_MODE || !CONFIG.API_URL) {
+                    console.log('Modo demo activado o sin API URL');
+                    appData.organizations = [];
+                    appData.contacts = [];
+                } else {
+                    await loadDataFromSheets();
+                }
+            } catch (error) {
+                console.error('Error en initApp:', error);
+                // Continuar con datos vacíos
+                appData.organizations = [];
+                appData.contacts = [];
+            }
+            
+            // Siempre renderizar, incluso con datos vacíos
+            try {
+                updateStats();
+                renderDirectory();
+                renderContacts();
+                renderOrganizations();
+                populateOrgSelect();
+                populateContactParentSelect();
+            } catch (renderError) {
+                console.error('Error renderizando:', renderError);
+            }
+            
+            // SIEMPRE ocultar el loading
+            showLoading(false);
+            console.log('App inicializada');
+        }
+
+        // ===========================
+        // DATA LOADING
+        // ===========================
+        async function loadDataFromSheets() {
+            // Timeout de 10 segundos
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 10000);
+            
+            try {
+                console.log('Cargando datos desde:', CONFIG.API_URL);
+                
+                const response = await fetch(CONFIG.API_URL + '?action=getData', {
+                    signal: controller.signal,
+                    mode: 'cors'
+                });
+                
+                clearTimeout(timeoutId);
+                
+                if (!response.ok) {
+                    throw new Error('HTTP ' + response.status);
+                }
+                
+                const data = await response.json();
+                
+                if (data.error) {
+                    throw new Error(data.error);
+                }
+                
+                appData.organizations = data.organizations || [];
+                appData.contacts = data.contacts || [];
+                appData.options = data.options || {};
+                
+                console.log('Datos cargados:', appData);
+                showToast('Datos cargados correctamente', 'success');
+                
+            } catch (error) {
+                clearTimeout(timeoutId);
+                console.error('Error loading data:', error);
+                
+                if (error.name === 'AbortError') {
+                    showToast('Timeout: El servidor no responde. Mostrando datos vacíos.', 'error');
+                } else {
+                    showToast('Error de conexión: ' + error.message, 'error');
+                }
+                
+                // Continuar con datos vacíos en lugar de fallar
+                appData.organizations = [];
+                appData.contacts = [];
+                appData.options = {};
+            }
+        }
+
+        // ===========================
+        // UI FUNCTIONS
+        // ===========================
+        function showLoading(show) {
+            document.getElementById('loadingOverlay').style.display = show ? 'flex' : 'none';
+        }
+
+        function showSection(sectionId) {
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.toggle('active', item.dataset.section === sectionId);
+            });
+            
+            document.querySelectorAll('.section-content').forEach(section => {
+                section.classList.toggle('active', section.id === 'section-' + sectionId);
+            });
+            
+            const titles = {
+                'directorio': 'Dashboard',
+                'contactos': 'Contactos',
+                'organizaciones': 'Organizaciones',
+                'opciones': 'Opciones',
+                'staff': 'Staff',
+                'logs': 'Log de Cambios'
+            };
+            document.getElementById('pageTitle').textContent = titles[sectionId] || 'Dashboard';
+        }
+
+        function updateStats() {
+            document.getElementById('statContacts').textContent = appData.contacts.length;
+            document.getElementById('statOrgs').textContent = appData.organizations.length;
+            document.getElementById('statActive').textContent = appData.contacts.filter(c => c.active !== false && c.active !== '❌').length;
+            document.getElementById('statRecent').textContent = Math.floor(appData.contacts.length * 0.3);
+            
+            document.getElementById('contactCount').textContent = appData.contacts.length;
+            document.getElementById('orgCount').textContent = appData.organizations.length;
+        }
+
+        // ===========================
+        // RENDER FUNCTIONS
+        // ===========================
+        function renderDirectory(filter = 'todos') {
+            const tbody = document.getElementById('directoryTable');
+            let orgs = [...appData.organizations];
+            
+            if (filter !== 'todos') {
+                orgs = orgs.filter(org => org.type && org.type.toLowerCase().includes(filter.toLowerCase()));
+            }
+            
+            tbody.innerHTML = orgs.length === 0 
+                ? '<tr><td colspan="7" style="text-align: center; padding: 40px; color: var(--text-secondary);">No hay organizaciones registradas</td></tr>'
+                : orgs.map(org => {
+                    const contactCount = appData.contacts.filter(c => c.orgId === org.id || c.org === org.name).length;
+                    return `
+                        <tr>
+                            <td>
+                                <div class="contact-cell">
+                                    <div class="contact-avatar org">${(org.name || 'ORG').substring(0, 2).toUpperCase()}</div>
+                                    <div class="contact-info">
+                                        <h4>${org.name || 'Sin nombre'}</h4>
+                                        <span>${org.website || 'Sin sitio web'}</span>
+                                    </div>
+                                </div>
+                            </td>
+                            <td><span class="org-badge">${org.type || '-'}</span></td>
+                            <td>${org.sector || '-'}</td>
+                            <td>${getTierBadge(org.tier)}</td>
+                            <td><strong>${contactCount}</strong> contactos</td>
+                            <td>${org.location || '-'}</td>
+                            <td>
+                                <div class="contact-actions" style="opacity: 1;">
+                                    <button class="action-btn" onclick="editOrganization('${org.id}')" title="Editar">
+                                        <span class="material-icons-round" style="font-size: 18px;">edit</span>
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    `;
+                }).join('');
+            
+            document.getElementById('showingCount').textContent = orgs.length;
+            document.getElementById('totalCount').textContent = appData.organizations.length;
+        }
+
+        function renderContacts() {
+            const tbody = document.getElementById('contactsTable');
+            tbody.innerHTML = appData.contacts.length === 0
+                ? '<tr><td colspan="7" style="text-align: center; padding: 40px; color: var(--text-secondary);">No hay contactos registrados</td></tr>'
+                : appData.contacts.map(contact => `
+                    <tr>
+                        <td>
+                            <div class="contact-cell">
+                                <div class="contact-avatar">${getInitials(contact.name || 'NN')}</div>
+                                <div class="contact-info">
+                                    <h4>${contact.name || 'Sin nombre'}</h4>
+                                    <span>${contact.directory || 'Sin directorio'}</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td><span class="org-badge">${contact.org || contact.orgId || '-'}</span></td>
+                        <td>${contact.position || '-'}</td>
+                        <td>${contact.email || contact.email1 || '-'}</td>
+                        <td>${contact.cell || '-'}</td>
+                        <td>${getStatusBadge(contact.active)}</td>
+                        <td>
+                            <div class="contact-actions" style="opacity: 1;">
+                                <button class="action-btn" onclick="editContact('${contact.id}')" title="Editar">
+                                    <span class="material-icons-round" style="font-size: 18px;">edit</span>
+                                </button>
+                                <button class="action-btn delete" onclick="deleteContact('${contact.id}')" title="Eliminar">
+                                    <span class="material-icons-round" style="font-size: 18px;">delete</span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `).join('');
+        }
+
+        function renderOrganizations() {
+            const tbody = document.getElementById('orgsTable');
+            tbody.innerHTML = appData.organizations.length === 0
+                ? '<tr><td colspan="7" style="text-align: center; padding: 40px; color: var(--text-secondary);">No hay organizaciones registradas</td></tr>'
+                : appData.organizations.map(org => `
+                    <tr>
+                        <td>
+                            <div class="contact-cell">
+                                <div class="contact-avatar org">${(org.name || 'ORG').substring(0, 2).toUpperCase()}</div>
+                                <div class="contact-info">
+                                    <h4>${org.name || 'Sin nombre'}</h4>
+                                    <span>${org.website || ''}</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td><span class="org-badge">${org.type || '-'}</span></td>
+                        <td>${org.sector || '-'}</td>
+                        <td>${org.origin || '-'}</td>
+                        <td>${org.location || '-'}</td>
+                        <td>${getTierBadge(org.tier)}</td>
+                        <td>
+                            <div class="contact-actions" style="opacity: 1;">
+                                <button class="action-btn" onclick="editOrganization('${org.id}')" title="Editar">
+                                    <span class="material-icons-round" style="font-size: 18px;">edit</span>
+                                </button>
+                                <button class="action-btn delete" onclick="deleteOrganization('${org.id}')" title="Eliminar">
+                                    <span class="material-icons-round" style="font-size: 18px;">delete</span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `).join('');
+        }
+
+        // ===========================
+        // HELPERS
+        // ===========================
+        function getInitials(name) {
+            if (!name) return 'NN';
+            return name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase();
+        }
+
+        function getTierBadge(tier) {
+            if (!tier) return '-';
+            const tierClass = tier.toLowerCase().replace(' ', '-');
+            return '<span class="tier-badge ' + tierClass + '">' + tier + '</span>';
+        }
+
+        function getStatusBadge(active) {
+            const isActive = active === true || active === '✅' || active === 'true';
+            return '<span class="status-badge ' + (isActive ? 'active' : 'inactive') + '">' + (isActive ? '✅ Activo' : '❌ Inactivo') + '</span>';
+        }
+
+        function populateOrgSelect() {
+            const select = document.getElementById('contactOrg');
+            const parentSelect = document.getElementById('orgParent');
+            
+            const options = '<option value="">Seleccionar organización...</option>' +
+                appData.organizations.map(org => 
+                    '<option value="' + org.id + '">' + (org.name || 'Sin nombre') + '</option>'
+                ).join('');
+            
+            select.innerHTML = options;
+            parentSelect.innerHTML = '<option value="">Ninguna (organización principal)</option>' +
+                appData.organizations.map(org => 
+                    '<option value="' + org.id + '">' + (org.name || 'Sin nombre') + '</option>'
+                ).join('');
+        }
+
+        function populateContactParentSelect() {
+            const select = document.getElementById('contactParent');
+            select.innerHTML = '<option value="">Ninguno</option>' +
+                appData.contacts.map(contact => 
+                    '<option value="' + contact.id + '">' + (contact.name || 'Sin nombre') + '</option>'
+                ).join('');
+        }
+
+        function filterDirectory(filter) {
+            document.querySelectorAll('.filter-tab').forEach(tab => {
+                tab.classList.toggle('active', tab.textContent.toLowerCase().includes(filter.toLowerCase()) || (filter === 'todos' && tab.textContent === 'Todos'));
+            });
+            renderDirectory(filter);
+        }
+
+        // ===========================
+        // MODAL FUNCTIONS
+        // ===========================
+        function openModal(type) {
+            const modal = document.getElementById(type + 'Modal');
+            modal.classList.add('active');
+            
+            if (type === 'contact') {
+                document.getElementById('contactForm').reset();
+                document.getElementById('contactId').value = '';
+                document.getElementById('contactModalTitle').textContent = 'Nuevo Contacto';
+            } else if (type === 'organization') {
+                document.getElementById('orgForm').reset();
+                document.getElementById('orgId').value = '';
+                document.getElementById('orgModalTitle').textContent = 'Nueva Organización';
+            }
+        }
+
+        function closeModal(type) {
+            document.getElementById(type + 'Modal').classList.remove('active');
+        }
+
+        function editContact(id) {
+            const contact = appData.contacts.find(c => c.id === id);
+            if (!contact) return;
+            
+            document.getElementById('contactId').value = contact.id;
+            document.getElementById('contactName').value = contact.name || '';
+            document.getElementById('contactOrg').value = contact.orgId || '';
+            document.getElementById('contactPosition').value = contact.position || '';
+            document.getElementById('contactStatus').value = contact.status || 'Activo';
+            document.getElementById('contactTopics').value = contact.topics || '';
+            document.getElementById('contactFunctions').value = contact.functions || '';
+            document.getElementById('contactCell').value = contact.cell || '';
+            document.getElementById('contactCellType').value = contact.cellType || 'Personal';
+            document.getElementById('contactWhatsapp').value = contact.whatsapp || '';
+            document.getElementById('contactPhone').value = contact.phone || '';
+            document.getElementById('contactPhoneType').value = contact.phoneType || 'Oficina';
+            document.getElementById('contactEmail1').value = contact.email || contact.email1 || '';
+            document.getElementById('contactEmailType1').value = contact.emailType || contact.emailType1 || 'Trabajo';
+            document.getElementById('contactEmail2').value = contact.email2 || '';
+            document.getElementById('contactEmailType2').value = contact.emailType2 || 'Trabajo';
+            document.getElementById('contactEmail3').value = contact.email3 || '';
+            document.getElementById('contactEmailType3').value = contact.emailType3 || 'Trabajo';
+            document.getElementById('contactEmailPref').value = contact.emailPreference || '1';
+            document.getElementById('contactLinkedIn').value = contact.linkedin || '';
+            document.getElementById('contactActive').value = contact.active === false || contact.active === '❌' ? 'false' : 'true';
+            document.getElementById('contactNotes').value = contact.notes || '';
+            
+            document.getElementById('contactModalTitle').textContent = 'Editar Contacto';
+            document.getElementById('contactModal').classList.add('active');
+        }
+
+        function editOrganization(id) {
+            const org = appData.organizations.find(o => o.id === id);
+            if (!org) return;
+            
+            document.getElementById('orgId').value = org.id;
+            document.getElementById('orgName').value = org.name || '';
+            document.getElementById('orgParent').value = org.parentOrgId || '';
+            document.getElementById('orgType').value = org.type || '';
+            document.getElementById('orgSector').value = org.sector || '';
+            document.getElementById('orgSubsector').value = org.subsector || '';
+            document.getElementById('orgDirectories').value = org.directories || '';
+            document.getElementById('orgTier').value = org.tier || '';
+            document.getElementById('orgOrigin').value = org.origin || '';
+            document.getElementById('orgScope').value = org.scope || '';
+            document.getElementById('orgUnitScope').value = org.unitScope || '';
+            document.getElementById('orgWebsite').value = org.website || '';
+            document.getElementById('orgLocation').value = org.location || '';
+            document.getElementById('orgPhone').value = org.phone || '';
+            document.getElementById('orgAddress').value = org.address || '';
+            document.getElementById('orgIndustrialTopics').value = org.industrialTopics || '';
+            document.getElementById('orgNotes').value = org.notes || '';
+            
+            document.getElementById('orgModalTitle').textContent = 'Editar Organización';
+            document.getElementById('organizationModal').classList.add('active');
+        }
+
+        // ===========================
+        // SAVE FUNCTIONS
+        // ===========================
+        async function saveContact() {
+            showLoading(true);
+            
+            const id = document.getElementById('contactId').value;
+            const orgId = document.getElementById('contactOrg').value;
+            const org = appData.organizations.find(o => o.id === orgId);
+            
+            const contactData = {
+                id: id || '',
+                directory: document.getElementById('contactDirectory').value,
+                orgId: orgId,
+                org: org ? org.name : '',
+                parentContactId: document.getElementById('contactParent').value,
+                name: document.getElementById('contactName').value,
+                position: document.getElementById('contactPosition').value,
+                topics: document.getElementById('contactTopics').value,
+                functions: document.getElementById('contactFunctions').value,
+                cell: document.getElementById('contactCell').value,
+                cellType: document.getElementById('contactCellType').value,
+                whatsapp: document.getElementById('contactWhatsapp').value,
+                phone: document.getElementById('contactPhone').value,
+                phoneType: document.getElementById('contactPhoneType').value,
+                email: document.getElementById('contactEmail1').value,
+                emailType: document.getElementById('contactEmailType1').value,
+                email2: document.getElementById('contactEmail2').value,
+                emailType2: document.getElementById('contactEmailType2').value,
+                email3: document.getElementById('contactEmail3').value,
+                emailType3: document.getElementById('contactEmailType3').value,
+                emailPreference: document.getElementById('contactEmailPref').value,
+                linkedin: document.getElementById('contactLinkedIn').value,
+                notes: document.getElementById('contactNotes').value,
+                active: document.getElementById('contactActive').value === 'true',
+                status: document.getElementById('contactStatus').value
+            };
+            
+            try {
+                const response = await fetch(CONFIG.API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'saveContact', data: contactData })
+                });
+                
+                const result = await response.json();
+                
+                if (result.error) {
+                    throw new Error(result.error);
+                }
+                
+                await loadDataFromSheets();
+                updateStats();
+                renderDirectory();
+                renderContacts();
+                populateOrgSelect();
+                populateContactParentSelect();
+                
+                closeModal('contact');
+                showToast(id ? 'Contacto actualizado' : 'Contacto creado exitosamente', 'success');
+                
+            } catch (error) {
+                console.error('Error saving contact:', error);
+                showToast('Error al guardar: ' + error.message, 'error');
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        async function saveOrganization() {
+            showLoading(true);
+            
+            const id = document.getElementById('orgId').value;
+            
+            const orgData = {
+                id: id || '',
+                parentOrgId: document.getElementById('orgParent').value,
+                type: document.getElementById('orgType').value,
+                sector: document.getElementById('orgSector').value,
+                subsector: document.getElementById('orgSubsector').value,
+                directories: document.getElementById('orgDirectories').value,
+                tier: document.getElementById('orgTier').value,
+                name: document.getElementById('orgName').value,
+                origin: document.getElementById('orgOrigin').value,
+                scope: document.getElementById('orgScope').value,
+                website: document.getElementById('orgWebsite').value,
+                unitScope: document.getElementById('orgUnitScope').value,
+                location: document.getElementById('orgLocation').value,
+                address: document.getElementById('orgAddress').value,
+                phone: document.getElementById('orgPhone').value,
+                industrialTopics: document.getElementById('orgIndustrialTopics').value,
+                notes: document.getElementById('orgNotes').value
+            };
+            
+            try {
+                const response = await fetch(CONFIG.API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'saveOrganization', data: orgData })
+                });
+                
+                const result = await response.json();
+                
+                if (result.error) {
+                    throw new Error(result.error);
+                }
+                
+                await loadDataFromSheets();
+                updateStats();
+                renderDirectory();
+                renderOrganizations();
+                populateOrgSelect();
+                
+                closeModal('organization');
+                showToast(id ? 'Organización actualizada' : 'Organización creada exitosamente', 'success');
+                
+            } catch (error) {
+                console.error('Error saving organization:', error);
+                showToast('Error al guardar: ' + error.message, 'error');
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        // ===========================
+        // DELETE FUNCTIONS
+        // ===========================
+        async function deleteContact(id) {
+            if (!confirm('¿Estás seguro de eliminar este contacto?')) return;
+            
+            showLoading(true);
+            
+            try {
+                const response = await fetch(CONFIG.API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'delete', table: 'contacts', id: id })
+                });
+                
+                await loadDataFromSheets();
+                updateStats();
+                renderDirectory();
+                renderContacts();
+                showToast('Contacto eliminado', 'success');
+                
+            } catch (error) {
+                showToast('Error al eliminar: ' + error.message, 'error');
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        async function deleteOrganization(id) {
+            const orgContacts = appData.contacts.filter(c => c.orgId === id);
+            if (orgContacts.length > 0) {
+                showToast('No se puede eliminar una organización con contactos asociados', 'error');
+                return;
+            }
+            
+            if (!confirm('¿Estás seguro de eliminar esta organización?')) return;
+            
+            showLoading(true);
+            
+            try {
+                const response = await fetch(CONFIG.API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ action: 'delete', table: 'organizations', id: id })
+                });
+                
+                await loadDataFromSheets();
+                updateStats();
+                renderDirectory();
+                renderOrganizations();
+                populateOrgSelect();
+                showToast('Organización eliminada', 'success');
+                
+            } catch (error) {
+                showToast('Error al eliminar: ' + error.message, 'error');
+            } finally {
+                showLoading(false);
+            }
+        }
+
+        // ===========================
+        // SEARCH
+        // ===========================
+        function handleGlobalSearch(event) {
+            const query = event.target.value.toLowerCase();
+            if (query.length < 2) {
+                renderDirectory();
+                return;
+            }
+            
+            const filteredOrgs = appData.organizations.filter(org => 
+                (org.name && org.name.toLowerCase().includes(query)) ||
+                (org.type && org.type.toLowerCase().includes(query)) ||
+                (org.sector && org.sector.toLowerCase().includes(query))
+            );
+            
+            const tbody = document.getElementById('directoryTable');
+            tbody.innerHTML = filteredOrgs.map(org => {
+                const contactCount = appData.contacts.filter(c => c.orgId === org.id).length;
+                return `
+                    <tr>
+                        <td>
+                            <div class="contact-cell">
+                                <div class="contact-avatar org">${(org.name || 'ORG').substring(0, 2).toUpperCase()}</div>
+                                <div class="contact-info">
+                                    <h4>${org.name || 'Sin nombre'}</h4>
+                                    <span>${org.website || ''}</span>
+                                </div>
+                            </div>
+                        </td>
+                        <td><span class="org-badge">${org.type || '-'}</span></td>
+                        <td>${org.sector || '-'}</td>
+                        <td>${getTierBadge(org.tier)}</td>
+                        <td><strong>${contactCount}</strong> contactos</td>
+                        <td>${org.location || '-'}</td>
+                        <td>
+                            <div class="contact-actions" style="opacity: 1;">
+                                <button class="action-btn" onclick="editOrganization('${org.id}')">
+                                    <span class="material-icons-round" style="font-size: 18px;">edit</span>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+            
+            document.getElementById('showingCount').textContent = filteredOrgs.length;
+        }
+
+        // ===========================
+        // TOAST
+        // ===========================
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toastContainer');
+            const toast = document.createElement('div');
+            toast.className = 'toast ' + type;
+            toast.innerHTML = `
+                <div class="toast-icon">
+                    <span class="material-icons-round" style="font-size: 18px;">
+                        ${type === 'success' ? 'check_circle' : 'error'}
+                    </span>
+                </div>
+                <div class="toast-message">${message}</div>
+            `;
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.animation = 'slideIn 0.3s ease reverse';
+                setTimeout(() => toast.remove(), 300);
+            }, 4000);
+        }
+
+        // WhatsApp checkbox functionality
+        document.getElementById('contactWhatsappSame').addEventListener('change', function() {
+            const whatsappInput = document.getElementById('contactWhatsapp');
+            const cellInput = document.getElementById('contactCell');
+            if (this.checked) {
+                whatsappInput.value = cellInput.value;
+                whatsappInput.disabled = true;
+            } else {
+                whatsappInput.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>            position: fixed;
+            width: 260px;
+            height: 100vh;
+            overflow-y: auto;
+            z-index: 100;
+        }
+
+        .sidebar-header {
+            padding: 28px 24px;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            color: white;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            box-shadow: 0 4px 12px rgba(232, 168, 56, 0.35);
+        }
+
+        .logo-text {
+            color: var(--text-inverse);
+        }
+
+        .logo-text h1 {
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: -0.3px;
+        }
+
+        .logo-text span {
+            font-size: 11px;
+            color: rgba(255,255,255,0.55);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .sidebar-nav {
+            padding: 20px 12px;
+        }
+
+        .nav-section {
+            margin-bottom: 28px;
+        }
+
+        .nav-section-title {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.8px;
+            color: rgba(255,255,255,0.35);
+            padding: 0 12px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 14px;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            border-radius: var(--radius-md);
+            transition: var(--transition);
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-bottom: 2px;
+        }
+
+        .nav-item:hover {
+            background: rgba(255,255,255,0.08);
+            color: var(--text-inverse);
+        }
+
+        .nav-item.active {
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+            color: var(--text-inverse);
+            box-shadow: 0 4px 15px rgba(26, 107, 184, 0.4);
+        }
+
+        .nav-item .material-icons-round {
+            font-size: 20px;
+            opacity: 0.85;
+        }
+
+        .nav-item.active .material-icons-round {
+            opacity: 1;
+        }
+
+        .nav-badge {
+            margin-left: auto;
+            background: var(--accent);
+            color: var(--text-primary);
+            font-size: 10px;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-weight: 700;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 260px;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            background: var(--bg-card);
+            padding: 20px 32px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .page-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 26px;
+            font-weight: 600;
+            color: var(--text-primary);
+            letter-spacing: -0.5px;
+        }
+
         .breadcrumb {
             display: flex;
             align-items: center;
